@@ -16,7 +16,7 @@ class Reading < ApplicationRecord
     # change the logic of searching queue to some caching technique or redis implementation
     job_queue = Sidekiq::Queue.new
     data = job_queue.select { |queue| queue.klass == 'ReadingWorker' }
-    .collect(&:args).flatten.map { |reading| JSON.parse(reading) }
+    .collect(&:args).flatten.map { |reading| reading.class == String ? JSON.parse(reading) : reading }
     .find { |parsed_data| parsed_data['tracking_number'] == tracking_number.to_i }
     data = Reading.where(tracking_number: tracking_number).first unless data.present?
     data

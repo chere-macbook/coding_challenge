@@ -29,7 +29,7 @@ RSpec.describe Api::V1::ThermostatReadingsController, type: :controller do
     end
   end
 
-  context 'valid and invalid treacking number' do
+  context 'valid and invalid tracking number' do
     it 'gets the data for themostat readings' do
       headers = { 'CONTENT_TYPE' => 'application/json', 'TOKEN' => "#{thermostat.household_token}" }
       reading = FactoryBot.create(:reading, tracking_number: 45274536)
