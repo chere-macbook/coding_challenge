@@ -1,7 +1,7 @@
 # Heating System
 
 ## POST Reading
-> localhost:3000/api/v1/thermostat_readings
+> /api/v1/thermostat_readings
 ### Headers
 > Content-Type:	application/json , Token:	value of household_token
 ### Parameters
@@ -9,13 +9,13 @@
   
 
 ## GET Reading Details
-> localhost:3000/api/v1/thermostat_readings/:id
+> /api/v1/thermostat_readings/:id
 ### Headers
 > Content-Type:	application/json , Token:	value of household_token
 
 
 
 ## GET Thermostat Details
-> localhost:3000/api/v1/thermostat_readings/stats
+> /api/v1/thermostat_readings/stats
 ### Headers
 > Content-Type:	application/json , Token:	value of household_token
