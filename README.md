@@ -1,24 +1,21 @@
-# README
+# Heating System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## POST Reading
+> /api/v1/thermostat_readings
+### Headers
+> Content-Type:	application/json , Token:	value of household_token
+### Parameters
+> { "reading": {"temperature": 23, "humidity": 45.3, "battery_charge": 50 } }
+  
 
-Things you may want to cover:
+## GET Reading Details
+> /api/v1/thermostat_readings/:id
+### Headers
+> Content-Type:	application/json , Token:	value of household_token
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## GET Thermostat Details
+> /api/v1/thermostat_readings/stats
+### Headers
+> Content-Type:	application/json , Token:	value of household_token
