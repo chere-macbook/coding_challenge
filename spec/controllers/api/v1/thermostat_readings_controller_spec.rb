@@ -58,7 +58,7 @@ RSpec.describe Api::V1::ThermostatReadingsController, type: :controller do
     reading = FactoryBot.create(:reading, tracking_number: 45274536)
     request.headers.merge!(headers)
     get :stats
-    expect(response.body).to eql("[{\"id\":null,\"avg_temperature\":37.25,\"max_temperature\":78.0,\"min_temperature\":14.0,\"avg_humidity\":62.75,\"max_humidity\":98.0,\"min_humidity\":23.0,\"avg_battery_charge\":38.0,\"max_battery_charge\":76.0,\"min_battery_charge\":11.0}]")
+    expect(response.body).to eql("{\"avg_temperature\":37.25,\"max_temperature\":78.0,\"min_temperature\":14.0,\"avg_humidity\":62.75,\"max_humidity\":98.0,\"min_humidity\":23.0,\"avg_battery_charge\":38.0,\"max_battery_charge\":76.0,\"min_battery_charge\":11.0}")
     expect(response.status).to eql(200)
   end
 
