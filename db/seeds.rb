@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+thermostat = Thermostat.create(location: 'Pune', household_token: SecureRandom.uuid[0..10] )
+puts "Use Below token for authentication"
+puts "Token : #{thermostat.household_token}"

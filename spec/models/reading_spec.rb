@@ -14,13 +14,14 @@ RSpec.describe Reading, type: :model do
   context 'should get thermostat data' do
 
     it 'should get blank data' do
-      expect(Reading.thermostat_data('FASVDJKHv').to_json).to eql('null')
+      expect(Reading.thermostat_data('FASVDJKHv',3).to_json).to eql('null')
     end
 
     it 'shoild get data' do
       thermostat = FactoryBot.create(:thermostat)
       readings = FactoryBot.create(:reading, thermostat_id: thermostat.id)
-      expect(Reading.thermostat_data(readings.tracking_number).to_json).to eql(readings.to_json)
+      expect(Reading.thermostat_data(readings.tracking_number, thermostat.id).to_json)
+      .to eql(readings.to_json)
     end
   end
 end

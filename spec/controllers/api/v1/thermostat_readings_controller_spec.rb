@@ -32,7 +32,7 @@ RSpec.describe Api::V1::ThermostatReadingsController, type: :controller do
   context 'valid and invalid tracking number' do
     it 'gets the data for themostat readings' do
       headers = { 'CONTENT_TYPE' => 'application/json', 'TOKEN' => "#{thermostat.household_token}" }
-      reading = FactoryBot.create(:reading, tracking_number: 45274536)
+      reading = FactoryBot.create(:reading, tracking_number: 45274536, thermostat_id: thermostat.id)
       request.headers.merge!(headers)
       get :show, params: { id: '45274536' }
       expect(response.body).to eql(reading.to_json)
@@ -55,7 +55,6 @@ RSpec.describe Api::V1::ThermostatReadingsController, type: :controller do
     FactoryBot.create(:reading, temperature: 14, humidity: 23, battery_charge: 11, thermostat_id: thermostat.id)
     FactoryBot.create(:reading, temperature: 78, humidity: 98, battery_charge: 19, thermostat_id: thermostat.id)
     headers = { 'CONTENT_TYPE' => 'application/json', 'TOKEN' => "#{thermostat.household_token}" }
-    reading = FactoryBot.create(:reading, tracking_number: 45274536)
     request.headers.merge!(headers)
     get :stats
     expect(response.body).to eql("{\"avg_temperature\":37.25,\"max_temperature\":78.0,\"min_temperature\":14.0,\"avg_humidity\":62.75,\"max_humidity\":98.0,\"min_humidity\":23.0,\"avg_battery_charge\":38.0,\"max_battery_charge\":76.0,\"min_battery_charge\":11.0}")

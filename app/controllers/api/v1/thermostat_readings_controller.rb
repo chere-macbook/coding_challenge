@@ -13,7 +13,7 @@ class Api::V1::ThermostatReadingsController < ApplicationController
   end
 
   def show
-    @reading = Reading.thermostat_data(params[:id])
+    @reading = Reading.thermostat_data(params[:id], current_thermostat.id)
     if @reading.present?
       render json: @reading, status: :ok
     else
