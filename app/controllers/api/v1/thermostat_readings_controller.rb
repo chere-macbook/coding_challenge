@@ -22,7 +22,7 @@ class Api::V1::ThermostatReadingsController < ApplicationController
   end
 
   def stats
-    statatics = current_thermostat.statatics
+    statatics = current_thermostat.statatics.first.attributes.except('id')
     if statatics.present?
       render json: statatics, status: :ok
     else
